@@ -1,40 +1,52 @@
-{
-  "version": 2,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/projects-forms",
-      "destination": "/projects-forms/index.html"
-    },
-    {
-      "source": "/projects-forms/(.*)",
-      "destination": "/projects-forms/$1"
-    },
-    {
-      "source": "/",
-      "destination": "/index.html"
-    }
-  ]
-}
+ {
+    "version": 2,
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "DENY"
+          },
+          {
+            "key": "X-XSS-Protection",
+            "value": "1; mode=block"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/material-sistema-de-conteudo-inteligente",
+        "destination": "https://leadmagnet-sistema-conteudo-inteligente.vercel.app/"
+      },
+      {
+        "source": "/material-sistema-de-conteudo-inteligente/obrigado",
+        "destination": "https://leadmagnet-sistema-conteudo-inteligente.vercel.app/obrigado"
+      },
+      {
+        "source": "/material-sistema-de-conteudo-inteligente/(.*)",
+        "destination": "https://leadmagnet-sistema-conteudo-inteligente.vercel.app/$1"
+      },
+      {
+        "source": "/projects-forms",
+        "destination": "/projects-forms/index.html"
+      },
+      {
+        "source": "/projects-forms/(.*)",
+        "destination": "/projects-forms/$1"
+      },
+      {
+        "source": "/",
+        "destination": "/index.html"
+      }
+    ]
+  }
