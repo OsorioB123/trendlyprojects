@@ -1,4 +1,4 @@
- {
+{
     "version": 2,
     "headers": [
       {
@@ -26,15 +26,15 @@
     "rewrites": [
       {
         "source": "/material-sistema-de-conteudo-inteligente",
-        "destination": "https://leadmagnet-sistema-conteudo-inteligente.vercel.app/"
+        "destination": "https://leadmagnet-sistema-de-conteudo-inte.vercel.app/"
       },
       {
         "source": "/material-sistema-de-conteudo-inteligente/obrigado",
-        "destination": "https://leadmagnet-sistema-conteudo-inteligente.vercel.app/obrigado"
+        "destination": "https://leadmagnet-sistema-de-conteudo-inte.vercel.app/obrigado"
       },
       {
         "source": "/material-sistema-de-conteudo-inteligente/(.*)",
-        "destination": "https://leadmagnet-sistema-conteudo-inteligente.vercel.app/$1"
+        "destination": "https://leadmagnet-sistema-de-conteudo-inte.vercel.app/$1"
       },
       {
         "source": "/projects-forms",
