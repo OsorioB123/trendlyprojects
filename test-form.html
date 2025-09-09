@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Conexão - Google Apps Script</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-2xl font-bold mb-6">Teste de Conexão com Google Sheets</h1>
+        
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium mb-2">Nome Teste</label>
+                <input id="testName" type="text" value="Teste Manual" class="w-full p-2 border rounded">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium mb-2">Email Teste</label>
+                <input id="testEmail" type="email" value="teste@example.com" class="w-full p-2 border rounded">
+            </div>
+            
+            <button onclick="testConnection()" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
+                Testar Envio
+            </button>
+            
+            <button onclick="testDirectFetch()" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">
+                Testar URL Diretamente
+            </button>
+        </div>
+        
+        <div id="result" class="mt-6 p-4 bg-gray-100 rounded hidden">
+            <h3 class="font-bold mb-2">Resultado:</h3>
+            <pre id="resultContent" class="text-sm overflow-x-auto"></pre>
+        </div>
+        
+        <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded">
+            <h3 class="font-bold mb-2">Informações de Debug:</h3>
+            <p class="text-sm">URL do Apps Script:</p>
+            <code class="text-xs bg-gray-200 p-1 rounded block mt-1 break-all">
+                https://script.google.com/a/macros/trendlycorp.com/s/AKfycbzTN6TA3ua0vGeh_TJBUuoOrSnjkTg9d2jln54fPYmSo-gDOPJs2xaKpYRQZKuJMOkE/exec
+            </code>
+            <p class="text-sm mt-2">Abra o Console (F12) para ver logs detalhados</p>
+        </div>
+    </div>
+
+    <script>
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/a/macros/trendlycorp.com/s/AKfycbzTN6TA3ua0vGeh_TJBUuoOrSnjkTg9d2jln54fPYmSo-gDOPJs2xaKpYRQZKuJMOkE/exec';
+        
+        async function testConnection() {
+            const resultDiv = document.getElementById('result');
+            const resultContent = document.getElementById('resultContent');
+            
+            resultDiv.classList.remove('hidden');
+            resultContent.textContent = 'Enviando...';
+            
+            const testData = {
+                fullName: document.getElementById('testName').value,
+                email: document.getElementById('testEmail').value,
+                phone: '(11) 99999-9999',
+                companyMoment: 'Teste de conexão',
+                mainDesire: 'Verificar funcionamento',
+                involvementLevel: 'Alto',
+                investmentCapacity: 'Teste',
+                projectTiming: 'Imediato',
+                aiVision: 'Positiva',
+                totalPoints: 100,
+                qualifiedForProjects: true,
+                lgpdAccepted: true,
+                marketingAccepted: true,
+                userAgent: navigator.userAgent,
+                pageUrl: window.location.href
+            };
+            
+            console.log('Enviando dados:', testData);
+            
+            try {
+                // Método 1: Fetch com no-cors (não retorna resposta legível)
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(testData)
+                });
+                
+                console.log('Resposta recebida (no-cors, sem body):', response);
+                resultContent.textContent = 'Enviado! Como usamos no-cors, não podemos ler a resposta.\nVerifique a planilha para confirmar se os dados foram salvos.\n\nPlanilha: https://docs.google.com/spreadsheets/d/1XGsFHyQPAHh85uq2anLmmxdt7PhAH3kYZOgXA9uVX4w/';
+                
+            } catch (error) {
+                console.error('Erro:', error);
+                resultContent.textContent = 'Erro: ' + error.message;
+            }
+        }
+        
+        async function testDirectFetch() {
+            const resultDiv = document.getElementById('result');
+            const resultContent = document.getElementById('resultContent');
+            
+            resultDiv.classList.remove('hidden');
+            resultContent.textContent = 'Testando GET direto...';
+            
+            try {
+                // Teste com GET para verificar se a URL está acessível
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'GET',
+                    mode: 'no-cors'
+                });
+                
+                console.log('GET Response:', response);
+                
+                // Agora tenta abrir em nova aba para ver a resposta
+                window.open(GOOGLE_APPS_SCRIPT_URL, '_blank');
+                
+                resultContent.textContent = 'Uma nova aba foi aberta com a URL do Apps Script.\nSe aparecer uma mensagem JSON, a URL está funcionando.\nSe der erro 404 ou similar, há problema com a implantação.';
+                
+            } catch (error) {
+                console.error('Erro no GET:', error);
+                resultContent.textContent = 'Erro no GET: ' + error.message;
+            }
+        }
+        
+        // Log inicial
+        console.log('Página de teste carregada');
+        console.log('URL do Apps Script:', GOOGLE_APPS_SCRIPT_URL);
+    </script>
+</body>
+</html>

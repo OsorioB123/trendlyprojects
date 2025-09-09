@@ -25,6 +25,14 @@
   ],
   "rewrites": [
     {
+      "source": "/projects-forms",
+      "destination": "/projects-forms/index.html"
+    },
+    {
+      "source": "/projects-forms/(.*)",
+      "destination": "/projects-forms/$1"
+    },
+    {
       "source": "/",
       "destination": "/index.html"
     }
