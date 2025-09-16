@@ -25,6 +25,26 @@
     ],
     "rewrites": [
       {
+        "source": "/alfredo-mentoria",
+        "destination": "https://alfredo-mentoria.vercel.app/"
+      },
+      {
+        "source": "/alfredo-mentoria/inscricao",
+        "destination": "https://alfredo-mentoria.vercel.app/inscricao"
+      },
+      {
+        "source": "/alfredo-mentoria/inscricao/obrigado",
+        "destination": "https://alfredo-mentoria.vercel.app/inscricao/obrigado"
+      },
+      {
+        "source": "/alfredo-mentoria/termos",
+        "destination": "https://alfredo-mentoria.vercel.app/termos"
+      },
+      {
+        "source": "/alfredo-mentoria/(.*)",
+        "destination": "https://alfredo-mentoria.vercel.app/$1"
+      },
+      {
         "source": "/material-sistema-de-conteudo-inteligente",
         "destination": "https://leadmagnet-sistema-de-conteudo-inte.vercel.app/"
       },
