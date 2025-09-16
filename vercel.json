@@ -25,6 +25,14 @@
     ],
     "rewrites": [
       {
+        "source": "/_next/static/(.*)",
+        "destination": "https://alfredo-mentoria.vercel.app/_next/static/$1"
+      },
+      {
+        "source": "/_next/(.*)",
+        "destination": "https://alfredo-mentoria.vercel.app/_next/$1"
+      },
+      {
         "source": "/alfredo-mentoria",
         "destination": "https://alfredo-mentoria.vercel.app/"
       },
